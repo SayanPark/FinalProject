@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header_reference %}
+    <link rel="stylesheet" href="{% static 'main/main_page.css' %}" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="{% static 'members/signup_page.css' %}">
+{% endblock %}
+
+{% block title_page %}
+	Sign Up
+{% endblock %}
+
+{% block content_page %}
+    <section id="signup">
+        <div class="signup-container">
+            <h1>Sign Up</h1>
+            <form action="{% url 'sign-up' %}" method="POST">
+                {% csrf_token %}
+                {{ signup.as_p }}
+                <div class="button-container">
+                    <button type="submit">Signup</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

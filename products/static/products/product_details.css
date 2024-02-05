@@ -1,0 +1,51 @@
+#details {
+    background-color: #ffe5b4;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 60rem;
+    margin: 20px auto;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, .4);
+    text-align: left;
+    position: relative;
+}
+.details-container {
+    display: flex;
+}
+.details-text {
+    flex: 1;
+}
+.details-image {
+    flex: 1;
+    margin-left: 20px;
+}
+#details img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    transition: box-shadow 0.3s ease;
+}
+#details img:hover{
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.21);
+}
+
+.wishlist-form {
+    position: absolute;
+    bottom: 33px;
+    left: 32px;
+}
+#details button {
+    width: 100%;
+    padding: 7px 9px;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: rgba(227, 83, 53, 0);
+    background-color: rgba(4, 55, 242, 0.44);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+#details button:active,
+#details button:hover{
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.56);
+    background-color: rgb(4, 55, 242);
+}

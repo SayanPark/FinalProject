@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header_reference %}
+    <link rel="stylesheet" href="{% static 'main/main_page.css' %}" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="{% static 'products/product_details.css' %}">
+{% endblock %}
+
+{% block title_page %}
+    {{ product.title|title }}
+{% endblock %}
+
+{% block content_page %}
+    <section id="details">
+        <div class="details-container">
+            <div class="details-text">
+                <h3>{{ product.title }}</h3>
+                <h4>{{ product.date }}</h4>
+                <h5><a href="{% url 'products_by_category' category_slug=product.category.url_title %}">{{ product.category.title }}</a>,
+                {% for tag in product.pro_tag.all %}
+                    <a href="{% url 'products_by_tag' tag_slug=tag.tag %}">{{ tag.tag }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %},
+                {% for color in product.pro_color.all %}
+                    <a href="{% url 'products_by_color' color_slug=color.url_color %}">{{ color.color }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %},
+                {% for style in product.pro_style.all %}
+                    <a href="{% url 'products_by_style' style_slug=style.url_style %}">{{ style.style }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                </h5>
+                <p>Price:{{ product.price }}</p>
+                <p>Description: {{ product.description }}</p>
+                <p>Status:
+                    {% if product.availability %}
+                        Available <br>
+                        count of product:{{ product.count }}
+                    {% else %}
+                        Unavailable
+                    {% endif %}
+                </p>
+            </div>
+            <div class="details-image">
+                <img src="{{ product.pro_pic.url }}" alt="{{ product.title }}">
+            </div>
+        </div>
+        <form method="post" action="{% url 'add_wishlist' product.id %}" class="wishlist-form">
+            {% csrf_token %}
+            <button onclick="showWishlistPopup()" type="submit" value="Add you Wishlist">Add you Wishlist</button>
+        </form>
+    </section>
+<script>
+    function showWishlistPopup() {
+        alert("this product is your wishlist :)");
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header_reference %}
+    <link rel="stylesheet" href="{% static 'main/main_page.css' %}" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="{% static 'products/products_by_category.css' %}">
+{% endblock %}
+
+{% block title_page %}
+	Products by color
+{% endblock %}
+
+{% block content_page %}
+<section id="posts">
+    <h2>All Products in {{ color.color }}:</h2>
+    <div class="row">
+        {% for product in products %}
+            <div class="col">
+                <div class="card" style="width: 18rem;" >
+                    <img src="{{ product.pro_pic.url }}" class="card-img-top" alt="{{ product.title }}" >
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h4><a href="{{ product.slug }}">{{ product.title }}</a></h4><br>
+                            {{ product.date }}<br>
+                            {{ product.info }}<br>
+                            {{ product.description }}<br>
+                        <h5>{{ product.price }} Toman</h5>
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 and not forloop.last %}
+            	</div><div class="row">
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+

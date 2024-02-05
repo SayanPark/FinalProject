@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header_reference %}
+	<link rel="stylesheet" href="{% static 'main/main_page.css' %}" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="{% static 'members/change_pass.css' %}">
+{% endblock %}
+
+{% block title_page %}
+	ChangePassword
+{% endblock %}
+
+{% block content_page %}
+    <section id="changepass">
+        <div class="changepass-container">
+            <h1> Change Password</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-changepass">
+                    {{ form.as_p }}
+                </div>
+                <div class="button-container">
+                    <button type="submit">change</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

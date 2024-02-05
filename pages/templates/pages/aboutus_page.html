@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header_reference %}
+	<link rel="stylesheet" href="{% static 'main/main_page.css' %}" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="{% static 'pages/aboutus_page.css' %}">
+{% endblock %}
+
+{% block title_page %}
+	about us
+{% endblock %}
+
+{% block content_page %}
+    <section id="aboutus">
+        <h1>About us:</h1>
+        <a href="{% url 'about-us' %}"></a>
+        <p>The birth of Bead Loomy derived from an adept skill of designing
+            and a lifelong obsession with gorgeous bracelets.</p><br>
+        <p>bead is for the texture of our accessories, it's also pronounced similar to the Persian word beid
+            which in Farsi means weeping willow tree and loomy is for the word of loom.</p><br>
+        <p>Since a woman's appearance and style is an expression of who she is, why not make it unique?
+            Every Bead Loomy piece is added with the intention to make a woman stand out and elicit the
+            beauty that lies within.</p><br>
+        <p>We appreciate our customers and would love to feature you.
+           Be sure to tag us and show us how your rocked your Bead Loomy!</p><br>
+        <p>Have a bridal party or group event where you need ALL your girls to look exquisite?
+           Email us to ask about our special group discount off your order of 6 or more .</p>
+    </section>
+{% endblock %}

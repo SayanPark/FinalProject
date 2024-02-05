@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header_reference %}
+    <link rel="stylesheet" href="{% static 'main/main_page.css' %}" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="{% static 'products/wishlist.css' %}">
+{% endblock %}
+
+{% block title_page %}
+   Wishlist
+{% endblock %}
+
+{% block content_page %}
+<section id="wishlist">
+    <h2>Wishlist:</h2>
+    <div class="row">
+        {% for product in products %}
+            <div class="col">
+                <div class="card" style="width: 18rem;" >
+                    <img src="{{ product.pro_pic.url }}" class="card-img-top" alt="{{ product.title }}" >
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h4><a href="{{ product.slug }}">{{ product.title }}</a></h4><br>
+                            {{ product.date }}<br>
+                            {{ product.info }}<br>
+                            <a href="{% url 'products_by_category' category_slug=product.category.url_title %}">{{ product.category.title }}</a>,
+                            {% for tag in product.pro_tag.all %}
+                                <a href="{% url 'products_by_tag' tag_slug=tag.tag %}">{{ tag.tag }}</a>{% if not forloop.last %}, {% endif %}
+                            {% endfor %},
+                            {% for color in product.pro_color.all %}
+                                <a href="{% url 'products_by_color' color_slug=color.url_color %}">{{ color.color }}</a>{% if not forloop.last %}, {% endif %}
+                            {% endfor %},
+                            {% for style in product.pro_style.all %}
+                                <a href="{% url 'products_by_style' style_slug=style.url_style %}">{{ style.style }}</a>{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
+                        <h5>{{ product.price }} Toman</h5>
+                        <div class="button-container">
+                            <form method="post" action="{% url 'remove_wishlist' product.id %}">
+                                {% csrf_token %}
+                                <input type="submit" value="remove" class="remove-button">
+                            </form><button onclick="showPurchasePopup()" class="purchase-button">purchase</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 and not forloop.last %}
+            	</div><div class="row">
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+<script>
+    function showPurchasePopup() {
+        alert("this site is not real :)");
+    }
+</script>
+{% endblock %}

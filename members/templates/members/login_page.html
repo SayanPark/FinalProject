@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header_reference %}
+    <link rel="stylesheet" href="{% static 'main/main_page.css' %}" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="{% static 'members/login_page.css' %}">
+{% endblock %}
+
+{% block title_page %}
+	Log in
+{% endblock %}
+
+{% block content_page %}
+    <section id="Login">
+        <div class="login-container">
+            <h1>Log in</h1>
+            <form action="{% url 'log-in' %}" method="POST">
+                {% csrf_token %}
+                {{ form_login.user.label_tag }}
+                {{ form_login.user }}
+                {{ form_login.user.errors }}<br>
+                {{ form_login.password.label_tag }}
+                {{ form_login.password }}
+                {{ form_login.password.errors }}
+                <div class="button-container">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+            <p class="signup-link">still not join?<a href="{% url 'sign-up' %}"> signup here.</a></p><br>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header_reference %}
+    <link rel="stylesheet" href="{% static 'main/main_page.css' %}" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="{% static 'pages/contactus_page.css' %}">
+{% endblock %}
+
+{% block title_page %}
+	Contact us
+{% endblock %}
+
+{% block content_page %}
+    <section id="contactus">
+        <h1>Contact:</h1>
+        <p>Address: 5, alley, street, square, town, city<br>Telephone: 09345367123<br>Email: beadloomyshop@gmail.com</p>
+        <hr>
+        <h6>Contact with us:</h6>
+        <form action="{% url 'contact-us' %}" method="post">
+            {% csrf_token %}
+            <div class="contact-comment">
+                <label for="name">name:</label>
+                <input id="name" type="text" name="name" required>
+                <label for="email">Email:</label>
+                <input id="email" type="email" name="email" required>
+                <label for="text"></label>
+                    <textarea id="text" name="comment" rows="5" placeholder="Enter your comment here..."></textarea>
+            </div>
+            <br>
+            <button type="submit" onclick="showCommentPopup()" class="btn btn-secondary">Send</button>
+        </form>
+    </section>
+<script>
+    function showCommentPopup() {
+        alert("your message sent to admin");
+    }
+</script>
+{% endblock %}
+
+

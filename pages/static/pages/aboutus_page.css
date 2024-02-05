@@ -1,0 +1,16 @@
+#aboutus {
+    background-color: #ffe5b4;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 60rem;
+    margin: 20px auto;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, .4);
+}
+#aboutus h1{
+    text-align: left;
+    margin-bottom: 24px;
+}
+#aboutus p{
+    text-align: justify-all;
+    margin: 1px;
+}
